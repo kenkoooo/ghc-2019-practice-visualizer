@@ -38,9 +38,6 @@ export class ResultCanvas extends React.Component<CanvasProps, CanvasState> {
                 ctx.fillRect(c1, r1, c2 - c1 + 1, r2 - r1 + 1);
             });
         }
-
-
-
     }
 
     render() {

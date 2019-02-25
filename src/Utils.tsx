@@ -1,5 +1,4 @@
 import React from 'react';
-import Slider from "@material-ui/lab/Slider";
 import { Typography } from '@material-ui/core';
 
 export async function readFile(file: any): Promise<string> {
@@ -39,19 +38,26 @@ export class SimpleSlider extends React.Component<SliderProps, SliderState> {
         this.handleChange = this.handleChange.bind(this);
     }
 
-    handleChange(e: any, v: number) {
+    handleChange(e: any) {
+        let v = e.target.value;
         if (this.props.onChange) {
             this.props.onChange(e, v);
         }
-
         this.setState({ value: v })
     }
 
     render() {
         return (
             <div>
-                <Typography variant="h6">Steps: {this.state.value}</Typography>
-                <Slider
+                <input
+                    type="range"
+                    min={this.props.min}
+                    max={this.props.max}
+                    value={this.state.value}
+                    step={1}
+                    onChange={this.handleChange} />
+                <input
+                    type="number"
                     min={this.props.min}
                     max={this.props.max}
                     value={this.state.value}
